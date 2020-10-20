@@ -44,7 +44,7 @@ public class ScoreFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-		FragmentScoreBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_score, container, false);
+		final FragmentScoreBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_score, container, false);
 		binding.setHomeGoalScorerList(homeGoalScorerList);
 		binding.setAwayGoalScorerList(awayGoalScorerList);
 		binding.setFragment(this);
@@ -77,4 +77,25 @@ public class ScoreFragment extends Fragment {
 
 	}
 
+	public String getHomeScorer() {
+		StringBuilder result = new StringBuilder();
+		for (GoalScorer g : homeGoalScorerList) {
+			result.append(g.getName())
+					.append(" ")
+					.append(g.getMinute())
+					.append(" \" ");
+		}
+		return result.toString();
+	}
+
+	public String getAwayScorer() {
+		StringBuilder result = new StringBuilder();
+		for (GoalScorer g : awayGoalScorerList) {
+			result.append(g.getName())
+					.append(" ")
+					.append(g.getMinute())
+					.append(" \" ");
+		}
+		return result.toString();
+	}
 }
